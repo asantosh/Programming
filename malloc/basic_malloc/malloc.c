@@ -8,7 +8,7 @@ calloc() is similar to malloc, except that it sets values in the memory location
 /* HEAP SECTION
 -----------------------------------------------------
 |					|								|		
-|sLimit				|<-break					rLimit  |
+|sLimit				|<-break				rLimit  |
 |(mapped region)    |			(unmapped region)	|
 -----------------------------------------------------
 */
@@ -30,20 +30,20 @@ void *m_malloc(size_t size)
 	return ptr;
 }
 
-void *m_calloc(size_t size)
+void *m_calloc(size_t nmemb, size_t size)
 {
 	void *ptr;
-	char *chptr = NULL;
+	int *tmpptr;
 	size_t count;
 
-	ptr = m_malloc(size);
+	ptr = m_malloc(nmemb * size);
 
 	if (!ptr)
 		return ptr;
-
-	chptr = ptr;
-	for (count = 0; count < size; count++)
-		*chptr++ = 0;
+	
+	tmpptr = ptr;
+	for (count = 0; count < nmemb * size; count++)
+		*tmpptr++ = 0;
 
 	return ptr;
 }

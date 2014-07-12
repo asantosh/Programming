@@ -9,6 +9,7 @@ To build:
 
 /*Set the number of bytes*/
 #define MAX_B 4
+#define MEM   4		/*number of members*/
 
 int main(void)
 {
@@ -16,16 +17,25 @@ int main(void)
 	int cnt;
 
 	/*Allocate 4 bytes*/
+	printf("MALLOC\n");
 	ptr = m_malloc(MAX_B);
 	if (!ptr) {
 		printf("Error: Unable to allocate memory\n");
 		return -1;
 	}
 	
-	for (cnt = 0; cnt < MAX_B; cnt++) {
-		ptr[cnt] = cnt;
-		printf("Value ptr[%d] = %d\n", cnt, ptr[cnt]);
+	*ptr = MAX_B;
+	printf("Value of ptr = %p, *ptr = %d\n", ptr, *ptr);
+	
+	printf("\nCALLOC\n");
+	ptr = m_calloc(MEM, MAX_B);
+	if (!ptr) {
+		printf("Error: Unable to allocate memory\n");
+		return -1;
 	}
+	
+	for (cnt = 0; cnt < MEM; cnt++)
+		printf("Value of ptr = %p and *ptr = %d\n", ptr, *ptr++);
 
 	return 0;
 }
