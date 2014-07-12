@@ -6,16 +6,16 @@ calloc() is similar to malloc, except that it sets values in the memory location
 */
 
 /* HEAP SECTION
------------------------------------------------------
-|					|								|		
-|sLimit				|<-break				rLimit  |
-|(mapped region)    |			(unmapped region)	|
------------------------------------------------------
+------------------------------------------
+|		    |			|
+|sLimit		    |<-break	rLimit  |
+|(mapped region)    |(unmapped region)	|
+------------------------------------------
 */
 
-#include <stdio.h>          //NULL 
+#include <stdio.h>          //NULL
 #include <sys/types.h>      //size_t
-#include <unistd.h>			//sbrk
+#include <unistd.h>         //sbrk
 #include "malloc.h"
 
 void *m_malloc(size_t size)
