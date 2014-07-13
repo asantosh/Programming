@@ -26,6 +26,8 @@ int main(void)
 	
 	*ptr = MAX_B;
 	printf("Value of ptr = %p, *ptr = %d\n", ptr, *ptr);
+
+	m_free(ptr);
 	
 	printf("\nCALLOC\n");
 	ptr = m_calloc(MEM, MAX_B);
@@ -35,7 +37,9 @@ int main(void)
 	}
 	
 	for (cnt = 0; cnt < MEM; cnt++)
-		printf("Value of ptr = %p and *ptr = %d\n", ptr, *ptr++);
+		printf("Value of ptr = %p and *ptr = %d\n", &ptr[cnt], ptr[cnt]);
+		
+	m_free(ptr);
 
 	return 0;
 }

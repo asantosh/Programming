@@ -47,3 +47,9 @@ void *m_calloc(size_t nmemb, size_t size)
 
 	return ptr;
 }
+
+void m_free(void *ptr)
+{
+	if (brk(ptr))
+		printf("Unable to free\n");
+}
