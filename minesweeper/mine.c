@@ -8,119 +8,119 @@
 
 int get_rand(void)
 {
-	return rand() % block;
+    return rand() % block;
 }
 
 int display(int mat[][block])
 {
-	int row, col;
-	
-	for (row = 0; row < block; row++) {
-		for (col = 0; col < block; col++) {
-			if (mat[row][col] == -1)
-				printf("x  ");
-			else if (mat[row][col] == -2)
-				printf("-  ");
-			else
-				printf("%d  ", mat[row][col]);
-		}
-		printf("\n");
+    int row, col;
+
+    for (row = 0; row < block; row++) {
+	for (col = 0; col < block; col++) {
+	    if (mat[row][col] == -1)
+		printf("x  ");
+	    else if (mat[row][col] == -2)
+		printf("-  ");
+	    else
+		printf("%d  ", mat[row][col]);
 	}
 	printf("\n");
-	
-	return 0;
+    }
+    printf("\n");
+
+    return 0;
 }
 
 int set_mine(int mat[][block])
 {
-	int row = -1, col = -1, count;
-		
-	for (count = 0; count < mines; count++) {
-		row = get_rand();
-		col = get_rand();
-		mat[row][col] = -1 ;
+    int row = -1, col = -1, count;
 
-		if (row - 1 >= 0) {
-			if (mat[row - 1][col] != -1)
-				mat[row - 1][col] 	+= 1;
-			
-			if (col - 1 >= 0 && mat[row - 1][col-1] != -1)
-				mat[row - 1][col-1] += 1;
-			if (col + 1 < block && mat[row - 1][col+1] != -1)
-				mat[row - 1][col+1] += 1;
-		}
-		
-		if (col - 1 >= 0 && mat[row][col-1] != -1)
-			mat[row][col-1] += 1;
-		
-		if (col + 1 < block && mat[row][col+1] != -1)
-			mat[row][col+1] += 1;
-		
-		if (row + 1 < block) {
-			if (mat[row + 1][col] != -1)
-				mat[row + 1][col] 	+= 1;
-			if (col - 1 >= 0 && mat[row + 1][col-1] != -1)
-				mat[row + 1][col-1] += 1;
-			if (col + 1 < block && mat[row + 1][col+1] != -1)
-				mat[row + 1][col+1] += 1;
-		}
+    for (count = 0; count < mines; count++) {
+	row = get_rand();
+	col = get_rand();
+	mat[row][col] = -1 ;
+
+	if (row - 1 >= 0) {
+	    if (mat[row - 1][col] != -1)
+		mat[row - 1][col] 	+= 1;
+
+	    if (col - 1 >= 0 && mat[row - 1][col-1] != -1)
+		mat[row - 1][col-1] += 1;
+	    if (col + 1 < block && mat[row - 1][col+1] != -1)
+		mat[row - 1][col+1] += 1;
 	}
-	return 0;
+
+	if (col - 1 >= 0 && mat[row][col-1] != -1)
+	    mat[row][col-1] += 1;
+
+	if (col + 1 < block && mat[row][col+1] != -1)
+	    mat[row][col+1] += 1;
+
+	if (row + 1 < block) {
+	    if (mat[row + 1][col] != -1)
+		mat[row + 1][col] 	+= 1;
+	    if (col - 1 >= 0 && mat[row + 1][col-1] != -1)
+		mat[row + 1][col-1] += 1;
+	    if (col + 1 < block && mat[row + 1][col+1] != -1)
+		mat[row + 1][col+1] += 1;
+	}
+    }
+    return 0;
 }
 int main(void)
 {
-	time_t t;
-	int matrix[block][block],  output[block][block];
-	int  status = 0, row, col, count = 0;
-	char c;
-	srand((unsigned int)&t);
-	
-	memset(matrix, 0, sizeof(matrix));
-	for (row = 0; row < block; row++)
-		for (col = 0; col < block; col++)
-			output[row][col] = -2;
-	
+    time_t t;
+    int matrix[block][block],  output[block][block];
+    int  status = 0, row, col, count = 0;
+    char c;
+    srand((unsigned int)&t);
 
-	set_mine(matrix);
-	display(matrix);
-	
-	while (!status && count < 9) {
-		scanf(" %c %d %d", &c, &row, &col);
-		count++;
-		switch (c) {
-			case 'd' :
-			case 'D' :
-					if (matrix[row][col] == -1)
-						status = 1;
-					else {
-						output[row][col] = matrix[row][col];
-						display(output);
-					}
-					break;
-					
-			
-			case 'm' :
-			case 'M' :
-					if (matrix[row][col] != -1)
-						status = 1;
-					else {
-						output[row][col] = -1;
-						display(output);
-					}
-					break;
-			default:
-					count--;
-					printf("Invalid Input\n");
-					break;			
+    memset(matrix, 0, sizeof(matrix));
+    for (row = 0; row < block; row++)
+	for (col = 0; col < block; col++)
+	    output[row][col] = -2;
+
+
+    set_mine(matrix);
+    display(matrix);
+
+    while (!status && count < 9) {
+	scanf(" %c %d %d", &c, &row, &col);
+	count++;
+	switch (c) {
+	    case 'd' :
+	    case 'D' :
+		if (matrix[row][col] == -1)
+		    status = 1;
+		else {
+		    output[row][col] = matrix[row][col];
+		    display(output);
 		}
-		if(status == 1) {
-			printf("Game OVer\n");
-			break;
+		break;
+
+
+	    case 'm' :
+	    case 'M' :
+		if (matrix[row][col] != -1)
+		    status = 1;
+		else {
+		    output[row][col] = -1;
+		    display(output);
 		}
+		break;
+	    default:
+		count--;
+		printf("Invalid Input\n");
+		break;			
 	}
-	
-	if(status == 2)
-			printf("You won\n");
+	if(status == 1) {
+	    printf("Game OVer\n");
+	    break;
+	}
+    }
 
-	return 0;
+    if(status == 2)
+	printf("You won\n");
+
+    return 0;
 }

@@ -2,22 +2,22 @@
 
 int main()
 {
-	int nl =0, nw =0;
-	char c;
-	
-	while((c = getchar()) != EOF) {
-		if(c == '\n')
-			++nl;
-		if(c == '\n' || c == ' ')
-			++nw;
-	}
-	
-	printf("%d %d \n",nl, nw);
+    int nl =0, nw =0;
+    char c;
 
-	return 0;
+    while((c = getchar()) != EOF) {
+	if(c == '\n')
+	    ++nl;
+	if(c == '\n' || c == ' ')
+	    ++nw;
+    }
+
+    printf("%d %d \n",nl, nw);
+
+    return 0;
 }
 
-		
+
 
 
 

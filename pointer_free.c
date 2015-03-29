@@ -3,17 +3,17 @@
 
 int main()
 {
-	int *ptr = malloc(sizeof(int));
+    int *ptr = malloc(sizeof(int));
 
-	*ptr = 8;
+    *ptr = 8;
 
-	printf("%p %d\n", ptr, *ptr);
+    printf("%p %d\n", ptr, *ptr);
 
-	free(ptr);
-	
-	printf("%p %d\n", ptr, *ptr);
-	
-	free(ptr);
+    free(ptr);
 
-	return 0;
+    printf("%p %d\n", ptr, *ptr);
+
+    free(ptr);
+
+    return 0;
 }

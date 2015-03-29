@@ -6,7 +6,7 @@
 typedef void *(*thread_routine) (void *);
 
 int create_thread(pthread_t *thread, const pthread_attr_t *attr,
-                  void *(*thread_routine) (void *), void *arg);
+	void *(*thread_routine) (void *), void *arg);
 
 
 #endif

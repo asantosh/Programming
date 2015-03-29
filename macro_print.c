@@ -5,7 +5,7 @@
 
 int main(void)
 {
-	debug("hello \n");
+    debug("hello \n");
 
-	return 0;
+    return 0;
 }

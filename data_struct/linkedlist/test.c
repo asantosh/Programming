@@ -3,25 +3,25 @@
 
 void foo(char **c)
 {
-	char *t = (char *) malloc(5);
+    char *t = (char *) malloc(5);
 
-	t = "hell";
-	
-	printf("t = %s\n", t);
+    t = "hell";
 
-	*c = t;
-	
-	return;
+    printf("t = %s\n", t);
+
+    *c = t;
+
+    return;
 }
 
 
 int main(void)
 {
-	char *a = NULL;
+    char *a = NULL;
 
-	foo(&a);
+    foo(&a);
 
-	printf("a = %s\n", a);
-	
-	return 0;
+    printf("a = %s\n", a);
+
+    return 0;
 }

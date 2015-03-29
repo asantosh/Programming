@@ -3,34 +3,34 @@
 
 void fun2(int *t)
 {
-	printf("t = %p\n", t);
-//	free(t);
-//	t = NULL;
+    printf("t = %p\n", t);
+    //	free(t);
+    //	t = NULL;
 }
 
 void fun1(int **q)
 {
-	printf("*q = %p\n", *q);
-	fun2(*q);
-//	*q = NULL;
+    printf("*q = %p\n", *q);
+    fun2(*q);
+    //	*q = NULL;
 }
 
 
 int main(void)
 {
-	int *p = (int *)malloc(2);
+    int *p = (int *)malloc(2);
 
-	printf("p = %p\n", p);
-	fun1(&p);
-	p = NULL;
-	printf("p = %p\n", p);
+    printf("p = %p\n", p);
+    fun1(&p);
+    p = NULL;
+    printf("p = %p\n", p);
 
-	if (p)
-		printf("fail\n");
-	else
-		printf("done\n");
+    if (p)
+	printf("fail\n");
+    else
+	printf("done\n");
 
-	getchar();
+    getchar();
 
-	return 0;
+    return 0;
 }

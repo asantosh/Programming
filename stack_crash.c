@@ -3,23 +3,23 @@
 
 void func(char *input)
 {
-	char string[5] = {0};
+    char string[5] = {0};
 
-	printf("Before: string = %s \n", string); 
+    printf("Before: string = %s \n", string); 
 
-	strcpy(string, input);
+    strcpy(string, input);
 
-	printf("After: string = %s \n", string);
+    printf("After: string = %s \n", string);
 
 }
 
 int main(void)
 {
-	char *str = "helloworld";
-	
-	printf("str = %s \n", str);
-	
-	func(str);
+    char *str = "helloworld";
 
-	return 0;
+    printf("str = %s \n", str);
+
+    func(str);
+
+    return 0;
 }

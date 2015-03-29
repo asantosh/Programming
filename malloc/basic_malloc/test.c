@@ -1,8 +1,8 @@
 /*test.c : File to test the basic malloc feature implemented using m_malloc
 
-To build:
- 	For linux : gcc -Wall test.c malloc.c -o test
-*/
+  To build:
+  For linux : gcc -Wall test.c malloc.c -o test
+ */
 
 #include <stdio.h>
 #include "malloc.h"
@@ -13,33 +13,33 @@ To build:
 
 int main(void)
 {
-	int *ptr;
-	int cnt;
+    int *ptr;
+    int cnt;
 
-	/*Allocate 4 bytes*/
-	printf("MALLOC\n");
-	ptr = m_malloc(MAX_B);
-	if (!ptr) {
-		printf("Error: Unable to allocate memory\n");
-		return -1;
-	}
-	
-	*ptr = MAX_B;
-	printf("Value of ptr = %p, *ptr = %d\n", ptr, *ptr);
+    /*Allocate 4 bytes*/
+    printf("MALLOC\n");
+    ptr = m_malloc(MAX_B);
+    if (!ptr) {
+	printf("Error: Unable to allocate memory\n");
+	return -1;
+    }
 
-	m_free(ptr);
-	
-	printf("\nCALLOC\n");
-	ptr = m_calloc(MEM, MAX_B);
-	if (!ptr) {
-		printf("Error: Unable to allocate memory\n");
-		return -1;
-	}
-	
-	for (cnt = 0; cnt < MEM; cnt++)
-		printf("Value of ptr = %p and *ptr = %d\n", &ptr[cnt], ptr[cnt]);
-		
-	m_free(ptr);
+    *ptr = MAX_B;
+    printf("Value of ptr = %p, *ptr = %d\n", ptr, *ptr);
 
-	return 0;
+    m_free(ptr);
+
+    printf("\nCALLOC\n");
+    ptr = m_calloc(MEM, MAX_B);
+    if (!ptr) {
+	printf("Error: Unable to allocate memory\n");
+	return -1;
+    }
+
+    for (cnt = 0; cnt < MEM; cnt++)
+	printf("Value of ptr = %p and *ptr = %d\n", &ptr[cnt], ptr[cnt]);
+
+    m_free(ptr);
+
+    return 0;
 }

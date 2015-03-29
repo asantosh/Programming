@@ -1,14 +1,14 @@
 #include <stdio.h>
 
 main(){
-        const int ci = 123;
-        int *ncpi;
+    const int ci = 123;
+    int *ncpi;
 
-		ncpi = &ci;
+    ncpi = &ci;
 
-		printf("Before: ci = %d\n",ci);
+    printf("Before: ci = %d\n",ci);
 
-        *ncpi = 0;
+    *ncpi = 0;
 
-		printf("After: ci = %d\n",ci);
+    printf("After: ci = %d\n",ci);
 }

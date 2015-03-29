@@ -5,25 +5,25 @@
 
 int main(void)
 {
-	int *sptr = (int *) sbrk(0);
-	int *ptr  = (int *) malloc(15);
-	int *eptr = (int *) sbrk(0);
+    int *sptr = (int *) sbrk(0);
+    int *ptr  = (int *) malloc(15);
+    int *eptr = (int *) sbrk(0);
 
-	printf("start sptr = %p\n", sptr);
+    printf("start sptr = %p\n", sptr);
 
-	printf("before heap mem = %d\n", eptr - sptr);
-	
-	ptr  = (int *) malloc(15);
-	eptr = sbrk(0);
+    printf("before heap mem = %d\n", eptr - sptr);
 
-	printf("after heap mem = %d\n", eptr - sptr);
-	
-	printf("Alloc mem = %d\n", malloc_usable_size(ptr));
-	free(ptr);
+    ptr  = (int *) malloc(15);
+    eptr = sbrk(0);
 
-	eptr = sbrk(0);
-	printf("end end = %p\n", eptr);
+    printf("after heap mem = %d\n", eptr - sptr);
 
-	return 0;
+    printf("Alloc mem = %d\n", malloc_usable_size(ptr));
+    free(ptr);
+
+    eptr = sbrk(0);
+    printf("end end = %p\n", eptr);
+
+    return 0;
 }
 

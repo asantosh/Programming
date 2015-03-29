@@ -4,16 +4,16 @@
 
 int main()
 {
-	int ps = 5;
-	int i = 0;
-	int *lps = (int*)malloc(sizeof(int) * ps);
+    int ps = 5;
+    int i = 0;
+    int *lps = (int*)malloc(sizeof(int) * ps);
 
-	lps[ps] = 0;
+    lps[ps] = 0;
 
-	for (i = 0; i < ps; i++) {
-		lps[i] = i+1;
-		printf("%d \t %d \n", i, *lps++);
-	}
+    for (i = 0; i < ps; i++) {
+	lps[i] = i+1;
+	printf("%d \t %d \n", i, *lps++);
+    }
 
-	return 0;
+    return 0;
 }
