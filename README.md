@@ -1,4 +1,5 @@
-c_program
+Programming
 =========
 
-Program on Data Structures using C
+Contains all programming related doc's and example code.
+Programming languages : "C", "Python".
