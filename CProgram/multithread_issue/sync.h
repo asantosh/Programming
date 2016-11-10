@@ -2,8 +2,17 @@
 #define _SYNC_H_
 
 #define numThreads		3
-#define numListElm		10
+#define numListElm		1000
 #define print_error(str) 	printf("%s :Error "str"\n", __func__)
+#ifdef DEBUG
+#define dbg_print(fmt, ...) printf(fmt, ##__VA_ARGS__)
+#else
+#define dbg_print(fmt, ...)
+#endif
+
+#define INIT_LOCK(lock)     pthread_rwlock_init(&lock, NULL)
+#define WRITE_LOCK(lock)	pthread_rwlock_wrlock(&lock)
+#define LEAVE_LOCK(lock)	pthread_rwlock_unlock(&lock)
 
 void *producerThread(void *);
 void *consumerThread(void *);
@@ -18,9 +27,15 @@ typedef void *(*fptr_t)(void *);
 void listLink(node_t *block, node_t **listHead)
 {
 	node_t *listPtr = *listHead;
+	dbg_print("%s\n", __func__);
+
+	if (!block)
+		return;
+
 	if (!listPtr) {
 		listPtr = block;
 		*listHead = listPtr;
+		block->next = NULL;
 		return;
 	}
 
@@ -28,6 +43,7 @@ void listLink(node_t *block, node_t **listHead)
 		listPtr = listPtr->next;
 
 	listPtr->next = block;
+	block->next = NULL;
 
 	return;
 }
@@ -36,7 +52,12 @@ node_t *listUnLink(node_t **listHead)
 {
 	node_t *tmp;
 
+	dbg_print("%s\n", __func__);
+
 	tmp = *listHead;
+	if(!tmp)
+		return NULL;
+
 	*listHead = (*listHead)->next;
 
 	return tmp;
@@ -44,6 +65,7 @@ node_t *listUnLink(node_t **listHead)
 
 int traverseList(node_t *listPtr)
 {
+	dbg_print("%s\n", __func__);
 	if (!listPtr) {
 		print_error("Empty List");
 		return 1;
@@ -64,7 +86,7 @@ int createFreeList(int numElem, node_t **listHead)
 
 	for(idx = 0; idx < numElem; idx++) {
 		member = malloc(sizeof(node_t));
-		member->val = idx;
+		member->val = 0;
 		member->next = NULL;
 		listLink(member, listHead);
 	}
