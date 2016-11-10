@@ -4,10 +4,20 @@
 #define numThreads		3
 #define numListElm		1000
 #define print_error(str) 	printf("%s :Error "str"\n", __func__)
+
 #ifdef DEBUG
 #define dbg_print(fmt, ...) printf(fmt, ##__VA_ARGS__)
+#define print_return(str)   \
+	do { \
+		printf("%s :Error "str"\n", __func__);  \
+		return; \
+	} while(0)
 #else
 #define dbg_print(fmt, ...)
+#define print_return(str)   \
+	do { \
+		return; \
+	} while(0)
 #endif
 
 #define INIT_LOCK(lock)     pthread_rwlock_init(&lock, NULL)

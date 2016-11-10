@@ -13,7 +13,7 @@ pthread_rwlock_t freeListLock, list1Lock, list2Lock;
 void consume_info_in_block(node_t *ptr)
 {
 	if (!ptr)
-		return;
+		print_return("NULL");
 
 	ptr->val = 0;
 	return;
@@ -22,7 +22,7 @@ void consume_info_in_block(node_t *ptr)
 void use_block_x_to_pro_y(node_t *x, node_t *y)
 {
 	if (!x || !y)
-		return;
+		print_return("NULL");
 
 	y->val = x->val;
 	x->val = 0;
@@ -32,7 +32,7 @@ void use_block_x_to_pro_y(node_t *x, node_t *y)
 void produce_info(node_t *ptr)
 {
 	if (!ptr)
-		return;
+		print_return("NULL");
 
 	ptr->val = 1;
 	return;
