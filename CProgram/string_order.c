@@ -3,7 +3,8 @@
 
 int main(void)
 {
-    char input[] = "i am an indian";
+    char input1[] = "Keep rocking as always";
+    char *input = input1;
     char output[14] = {0};
     int len = 0;
     char *temp_ptr = NULL;
@@ -11,7 +12,7 @@ int main(void)
 
     while(input != NULL)
     {
-	if(*input == " ")
+	if(*input == ' ')
 	{
 	    input++;
 	    strcpy(output, input);
@@ -20,7 +21,7 @@ int main(void)
 	    for(; count != 0; count--)
 		temp_ptr++;
 	    /* TODO */
-	    strcat(temp_ptr, ); 		
+	    strcat(temp_ptr, );
 
 	    len = 0;
 

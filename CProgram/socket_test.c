@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
     if ( hp == NULL )
     {
-	printf("Unknown host or Network down %s \n", hp->h_name);
+	printf("Unknown host or Network down %s \n", input);
 	return 1;
     }
     printf("Network UP %s \n", hp->h_name);
